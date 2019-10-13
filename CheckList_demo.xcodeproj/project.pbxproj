@@ -13,6 +13,7 @@
 		A19F31F22352380F002B9195 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19F31F02352380F002B9195 /* Main.storyboard */; };
 		A19F31F423523812002B9195 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A19F31F323523812002B9195 /* Assets.xcassets */; };
 		A19F31F723523812002B9195 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A19F31F523523812002B9195 /* LaunchScreen.storyboard */; };
+		A19F31FF2352D41A002B9195 /* ChecklistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A19F31FE2352D41A002B9195 /* ChecklistViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		A19F31F323523812002B9195 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A19F31F623523812002B9195 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A19F31F823523812002B9195 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A19F31FE2352D41A002B9195 /* ChecklistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				A19F31EA2352380F002B9195 /* AppDelegate.swift */,
 				A19F31EC2352380F002B9195 /* SceneDelegate.swift */,
 				A19F31EE2352380F002B9195 /* ViewController.swift */,
+				A19F31FE2352D41A002B9195 /* ChecklistViewController.swift */,
 				A19F31F02352380F002B9195 /* Main.storyboard */,
 				A19F31F323523812002B9195 /* Assets.xcassets */,
 				A19F31F523523812002B9195 /* LaunchScreen.storyboard */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A19F31EF2352380F002B9195 /* ViewController.swift in Sources */,
+				A19F31FF2352D41A002B9195 /* ChecklistViewController.swift in Sources */,
 				A19F31EB2352380F002B9195 /* AppDelegate.swift in Sources */,
 				A19F31ED2352380F002B9195 /* SceneDelegate.swift in Sources */,
 			);
