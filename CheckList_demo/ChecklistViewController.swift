@@ -70,6 +70,7 @@ class ChecklistViewController: UITableViewController {
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath)
     {
+        // checkmark 还是根据cell来渲染,会出现滑动时,checkmark 状态不对的情况
         if let cell = tableView.cellForRow(at: indexPath){
             
             if cell.accessoryType == .none{
