@@ -12,15 +12,27 @@ class ChecklistViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        navigationController?.navigationBar.backItem?.title = "GO"
+//        navigationController?.navigationBar.prefersLargeTitles = true
 
+        item_initisal()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-
+    //MARK:- Checkbox 初始化
+    var row0checked = true
+    var row1checked = false
+    var row2checked = true
+    var row3checked = true
+    var row4checked = false
+    
+    
+    
     // MARK: - Table view data source - number of line/section
+    
     /* 数据源方法的作用是:
      当某一行变得可见时，向表视图提供一个新的（或是回收的）cell对象。
      我们不能,也不需要,手动调用该方法.
@@ -33,7 +45,7 @@ class ChecklistViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 25
+        return items.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,46 +53,75 @@ class ChecklistViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
         /* 这⾥我们请求获取cell中的标记为1000的⼦视图，这个标记就是我们刚才在storyboard中在标签上所设置的。通过这种方法，我们就获取了⼀个到该UILabel标签对象的引⽤。 实际上，通过使⽤tag标记的⽅式来获取到某个视觉元素的引⽤用是⾮常方便的,可以省掉了声明 @IBOutlet变量的步骤。
          */
-        let cell_label = cell.viewWithTag(1000) as! UILabel
-        
+
+        let item = items[indexPath.row]
         // 显示 > 5 行, 利用mod5 函数, 求 5 的倍数
-        let indexpath_row = mod5(beichushu: indexPath.row, chushu: 5)
-        if indexpath_row == 0 {
-            cell_label.text = "流浪地球"
-        } else if indexpath_row == 1{
-            cell_label.text = "疯狂的外星人"
-        } else if indexpath_row == 2{
-            cell_label.text = "飞驰人生"
-        } else if indexpath_row == 3{
-            cell_label.text = "喜剧之王"
-        }else if indexpath_row == 4{
-            cell_label.text = "小猪佩奇过大年"
-        }
+//        let indexpath_row = mod5(beichushu: indexPath.row, chushu: 5)
+        upgradeView_Text(for:cell, with:item)
+
         //结束以上的新代码段
+        upgradeView_Checkmark(for:cell, with:item )
+
         return cell
     }
     
-    func mod5(beichushu:Int,chushu:Int) -> Int{
-        return (beichushu % chushu)
-    }
+//    func mod5(beichushu:Int,chushu:Int) -> Int{
+//        return (beichushu % chushu)
+//    }
     
-    //MARK:- Table View Delegate - change checkbox
-
-    override func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath)
-    {
-        // checkmark 还是根据cell来渲染,会出现滑动时,checkmark 状态不对的情况
+    // 事件 : 点击某一行
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath){
+            let item = items[indexPath.row]
             
-            if cell.accessoryType == .none{
-                cell.accessoryType = .checkmark
-            }
-            else{
-                cell.accessoryType = .none
-            }
+            item.toggleChecked()
+            
+            upgradeView_Checkmark(for:cell, with:item)
         }
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    //MARK:- Function : upgrade the view for THE CHECKMARK
+    func upgradeView_Checkmark(for cell: UITableViewCell, with item :ChecklistItem){
+        
+        if item.checked{
+            cell.accessoryType = .checkmark
+        }else{
+            cell.accessoryType = .none
+        }
+    }
+    func upgradeView_Text(for cell: UITableViewCell, with item: ChecklistItem){
+        let cell_label = cell.viewWithTag(1000) as! UILabel
+        cell_label.text = item.text
+    }
+    
+    //MARK: - Actions
+    @IBAction func addItem(){
+        
+    }
+    
+    func item_initisal(){
+        // Do any additional setup after loading the view, typically from a nib.
+        let item1 = ChecklistItem()
+        item1.text = "重温德容为加盟巴萨寄出投名状"
+        items.append(item1)
+        
+        let item2 = ChecklistItem()
+        item2.text = "A股暴涨，赶紧去开个科创板的新户"
+        item2.checked = true
+        items.append(item2)
+        
+        let item3 = ChecklistItem()
+        item3.text = "两会召开中，关注每天的新闻动态"
+        item3.checked = true
+        items.append(item3)
+        
+        let item4 = ChecklistItem()
+        item4.text = "学习神奇的AI视频变脸技术"
+        items.append(item4)
+        
+        let item5 = ChecklistItem()
+        item5.text = "为参加6月的WWDC提前做好准备"
+        items.append(item5)
     }
     /*
     // Override to support conditional editing of the table view.

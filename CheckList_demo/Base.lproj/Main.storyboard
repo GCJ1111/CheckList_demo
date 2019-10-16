@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cmi-1G-Rbw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="F9M-G0-QO2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Checklist View Controller-->
+        <!--Checklists-->
         <scene sceneID="ueN-wL-yBa">
             <objects>
                 <tableViewController id="Cmi-1G-Rbw" customClass="ChecklistViewController" customModule="CheckList_demo" customModuleProvider="target" sceneMemberID="viewController">
@@ -38,10 +38,36 @@
                             <outlet property="delegate" destination="Cmi-1G-Rbw" id="DKO-uM-ahQ"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Checklists" id="8ho-Oa-Rdi">
+                        <barButtonItem key="backBarButtonItem" title="go" style="plain" id="yBv-Ni-BeZ"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="S39-zm-pNU">
+                            <connections>
+                                <action selector="addItem" destination="Cmi-1G-Rbw" id="1Bn-BW-iZS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GfA-2k-FhG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="170.625" y="130.98591549295776"/>
+            <point key="canvasLocation" x="1079.7101449275362" y="130.58035714285714"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0O0-ZY-JgE">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="F9M-G0-QO2" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9NU-sz-62T">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Cmi-1G-Rbw" kind="relationship" relationship="rootViewController" id="Fre-nu-Wel"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="E2y-2d-gDM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="169.56521739130437" y="130.58035714285714"/>
         </scene>
     </scenes>
 </document>
