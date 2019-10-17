@@ -16,6 +16,8 @@ class ChecklistViewController: UITableViewController {
 //        navigationController?.navigationBar.prefersLargeTitles = true
 
         item_initisal()
+
+
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -47,7 +49,7 @@ class ChecklistViewController: UITableViewController {
         // #warning Incomplete implementation, return the number of rows
         return items.count
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChecklistItem", for: indexPath)
@@ -73,9 +75,9 @@ class ChecklistViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let cell = tableView.cellForRow(at: indexPath){
             let item = items[indexPath.row]
-            
+            //1 - 更新model
             item.toggleChecked()
-            
+            //2 - 更新View
             upgradeView_Checkmark(for:cell, with:item)
         }
         tableView.deselectRow(at: indexPath, animated: true)
@@ -83,9 +85,7 @@ class ChecklistViewController: UITableViewController {
     // 滑动删除 : 某一行
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         //1 - 更新model,不仅从数组中删除了这个ChecklistItem对象，实际上也永久将其销毁了。
-        
         items.remove(at: indexPath.row)
-        
         //2 - 更新View
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
@@ -113,9 +113,7 @@ class ChecklistViewController: UITableViewController {
         items.append(item)
         
         let indexPath = IndexPath(row: newRowIndex, section: 0)
-        
         let indexPaths = [indexPath]
-        
         tableView.insertRows(at: indexPaths , with: .automatic)
     }
     

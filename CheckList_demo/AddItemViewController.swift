@@ -27,8 +27,20 @@ class AddItemViewController: UITableViewController {
     
     @IBAction func done(){
        //print some contents
-//        print("用户输入的信息是： \(textField.text!)")
+
+        let item = ChecklistItem()
+        item.text = textField.text!
+        items.append(item)
+        print("用户输入的信息是： \(textField.text!)")
+        print(items.count)
+//
+//
+
+        // TODO: 刷新 checklist tableview
+        
+        // 返回 checklist tableview
         navigationController?.popViewController(animated: true)
+//        self.reloadInputViews()
     }
     
     //MARK:- Table View Delegate methods
