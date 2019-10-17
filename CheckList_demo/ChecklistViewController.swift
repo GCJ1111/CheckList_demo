@@ -80,6 +80,16 @@ class ChecklistViewController: UITableViewController {
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }
+    // 滑动删除 : 某一行
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        //1 - 更新model,不仅从数组中删除了这个ChecklistItem对象，实际上也永久将其销毁了。
+        
+        items.remove(at: indexPath.row)
+        
+        //2 - 更新View
+        let indexPaths = [indexPath]
+        tableView.deleteRows(at: indexPaths, with: .automatic)
+    }
     //MARK:- Function : upgrade the view for THE CHECKMARK
     func upgradeView_Checkmark(for cell: UITableViewCell, with item :ChecklistItem){
         
@@ -96,7 +106,17 @@ class ChecklistViewController: UITableViewController {
     
     //MARK: - Actions
     @IBAction func addItem(){
+        let newRowIndex = items.count
         
+        let item = ChecklistItem()
+        item.text = "我是新添加的一行内容"
+        items.append(item)
+        
+        let indexPath = IndexPath(row: newRowIndex, section: 0)
+        
+        let indexPaths = [indexPath]
+        
+        tableView.insertRows(at: indexPaths , with: .automatic)
     }
     
     func item_initisal(){
